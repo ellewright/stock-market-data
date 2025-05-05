@@ -14,12 +14,18 @@ def get_eod_data(ticker):
         return data["data"][0]
 
 def main():
-    apple_stock_data = get_eod_data("AAPL")
+    print("Welcome to the Stock Market Data App.")
+    ticker = input("Enter a stock ticker: ").upper()
+    print()
     
-    print(apple_stock_data["open"])
-    print(apple_stock_data["high"])
-    print(apple_stock_data["low"])
-    print(apple_stock_data["close"])
+    try:
+        print(f"Showing stock data for {ticker}...")
+        stock_data = get_eod_data(ticker)
+        print(f"High: {stock_data["high"]}")
+        print(f"Low: {stock_data["low"]}")
+        print(f"Close: {stock_data["close"]}")
+    except:
+        print(f"Could not find {ticker}. Please try again.")
 
 if __name__ == "__main__":
     main()
